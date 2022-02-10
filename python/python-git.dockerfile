@@ -4,11 +4,11 @@
 
 # from python image
 ARG PYVER=latest
-# For more information, please refer to https://aka.ms/vscode-docker-python
 FROM python:${PYVER}
 
 LABEL author="AlMirai"
 LABEL email="live.almirai@outlook.com"
+LABEL version="1.1"
 
 # Keeps Python from generating .pyc files in the container
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -18,7 +18,7 @@ ENV PYTHONUNBUFFERED=1
 
 # exeute shell commands
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && \
-    apk add git && \
+    apk add --no-cache git && \
     mkdir /app
 
 WORKDIR /app
